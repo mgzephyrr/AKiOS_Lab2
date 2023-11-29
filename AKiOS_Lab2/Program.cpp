@@ -5,14 +5,26 @@
 /// </summary>
 void LIFOOperations() {
     int value; // переменная для хранения ввода пользователя
-    LIFOElem* tail = MakeLIFO(); // создаю список с дисциплиной LIFO, записываю его "хвост" в переменную tail
- 
-    cout << endl << "Вывод списка с начала:" << endl;
-    LIFOPrintFromFirst(tail);
+    LIFOElem* tail = MakeLIFO(); // создаю список с дисциплиной LIFO, записываю его "хвост" в переменную tail    
 
-    cout << endl << "Вывод списка с конца:" << endl;
-    LIFOPrintFromLast(tail);
+    __try {
+        cout << endl << "Вывод списка с начала:" << endl;
+        LIFOPrintFromFirst(tail);
 
+    }
+    __except (GetExceptionCode() == EXCEPTION_ACCESS_VIOLATION ? EXCEPTION_EXECUTE_HANDLER : EXCEPTION_CONTINUE_SEARCH) {
+        cout << "Список пуст!" << endl;
+    }
+    
+    __try {
+        cout << endl << "Вывод списка с конца:" << endl;
+        LIFOPrintFromLast(tail);
+
+    }
+    __except (GetExceptionCode() == EXCEPTION_ACCESS_VIOLATION ? EXCEPTION_EXECUTE_HANDLER : EXCEPTION_CONTINUE_SEARCH) {
+        cout << "Список пуст!" << endl;
+    }
+    
     cout << "\nВведите значение - целое число - для поиска (0 - конец): > "; 
     cin >> value; // прошу первый ввод вне цикла, чтобы учесть ситуацию, когда сразу ввели 0
 
@@ -51,11 +63,21 @@ void FIFOOperations() {
     int value; // переменная для хранения ввода пользователя
     FIFOElem* head = MakeFIFO(); // создаю список с дисциплиной FIFO, записываю его "голову" в переменную head
 
-    cout << endl << "Вывод списка с начала:" << endl;
-    FIFOPrintFromFirst(head);
+    try {
+        cout << endl << "Вывод списка с начала:" << endl;
+        FIFOPrintFromFirst(head);
+    }
+    catch (const char* error_message) {
+        cout << error_message << endl;
+    }
 
-    cout << endl << "Вывод списка с конца:" << endl;
-    FIFOPrintFromLast(head);
+    try {
+        cout << endl << "Вывод списка с конца:" << endl;
+        FIFOPrintFromLast(head);
+    }
+    catch (const char* error_message) {
+        cout << error_message << endl;
+    }
 
     cout << "\nВведите значение - целое число - для поиска (0 - конец): > ";
     cin >> value; // прошу первый ввод вне цикла, чтобы учесть ситуацию, когда сразу ввели 0
@@ -304,17 +326,17 @@ int main() {
 
     system("cls"); // очистка консоли после того, как дисциплина отработана
 
-    cout << "Однонаправленный список с сортировкой элементов по ключу (дисциплина FIFO)\n" << endl;
+    cout << "Однонаправленный список с сортировкой элементов по ключу\n" << endl;
     OWSLOperations();
 
     system("cls"); // очистка консоли после того, как дисциплина отработана
 
-    cout << "Двунаправленный список с сортировкой элементов по ключу (дисциплина FIFO)\n" << endl;
+    cout << "Двунаправленный список с сортировкой элементов по ключу\n" << endl;
     TWSLOperations();
 
     system("cls"); // очистка консоли после того, как дисциплина отработана
 
-    cout << "Однонаправленный список с сортировкой элементов по двум ключам (дисциплина FIFO)\n" << endl;
+    cout << "Однонаправленный список с сортировкой элементов по двум ключам\n" << endl;
     SLTFOperations();
 
     system("cls"); // очистка консоли после того, как дисциплина отработана

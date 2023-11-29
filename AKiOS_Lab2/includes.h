@@ -11,5 +11,8 @@
 #include "TWSL.h"
 #include "SLTF.h"
 #include "AVLTree.h"
+#include <stdio.h>
+#include <windows.h> 
+#include <excpt.h>
 
 using namespace std;

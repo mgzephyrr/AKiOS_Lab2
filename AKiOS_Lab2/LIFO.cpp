@@ -50,9 +50,13 @@ LIFOElem* MakeLIFO() {
 /// <param name="tail"> "хвост" списка, который нужно вывести в консоль </param>
 void LIFOPrintFromFirst(LIFOElem* tail) {
 
-    if (tail == nullptr) { // если список пустой
-        cout << "Список пуст!" << endl;
-        return;
+    //if (tail == nullptr) { // если список пустой
+    //    cout << "Список пуст!" << endl;
+    //    return;
+    //}
+
+    if (tail == nullptr) {
+        *tail = 20; // выкинет исключение
     }
 
     //else вывожу список с последнего введенного элемента до первого
@@ -68,9 +72,13 @@ void LIFOPrintFromFirst(LIFOElem* tail) {
 /// <param name="tail"> "хвост" списка, который нужно вывести в консоль </param>
 void LIFOPrintFromLast(LIFOElem* tail) {
 
-    if (tail == nullptr)  {// если список пустой
-        cout << "Список пуст!" << endl;
-        return;
+    //if (tail == nullptr)  {// если список пустой
+    //    cout << "Список пуст!" << endl;
+    //    return;
+    //}
+
+    if (tail == nullptr) {
+        *tail = 20; // выкинет исключение
     }
 
     LIFOElem* start = tail; // вспомогательный указатель, который будет идти по списку с начала, пока не дойдет до элемента, который только что был выведен в консоль

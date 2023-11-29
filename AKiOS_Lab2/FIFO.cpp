@@ -41,9 +41,13 @@ FIFOElem* MakeFIFO() {
 /// </summary>
 /// <param name="head"> "голова" списка, который нужно вывести в консоль </param>
 void FIFOPrintFromFirst(FIFOElem* head) {
-    if (head == nullptr) { // если список пустой
-        cout << "—писок пуст!" << endl;
-        return;
+    //if (head == nullptr) { // если список пустой
+    //    cout << "—писок пуст!" << endl;
+    //    return;
+    //}
+
+    if (head == nullptr) {
+        throw "—писок пуст!";
     }
 
     //else вывожу список с первого введенного элемента до последнего
@@ -58,9 +62,13 @@ void FIFOPrintFromFirst(FIFOElem* head) {
 /// </summary>
 /// <param name="head"> "голова" списка, который нужно вывести в консоль </param>
 void FIFOPrintFromLast(FIFOElem* head) {
-    if (head == nullptr) { // если список пустой
-        cout << "—писок пуст!" << endl;
-        return;
+    //if (head == nullptr) { // если список пустой
+    //    cout << "—писок пуст!" << endl;
+    //    return;
+    //}
+
+    if (head == nullptr) {
+        throw "—писок пуст!";
     }
 
     FIFOElem* start = head; // вспомогательный указатель, который будет идти по списку с начала, пока не дойдет до элемента, который только что был выведен в консоль
