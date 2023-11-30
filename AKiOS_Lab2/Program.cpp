@@ -45,11 +45,23 @@ void LIFOOperations() {
     {
         LIFORemove(tail, value);
 
-        cout << endl << "Вывод списка с начала:" << endl;
-        LIFOPrintFromFirst(tail);
+        __try {
+            cout << endl << "Вывод списка с начала:" << endl;
+            LIFOPrintFromFirst(tail);
 
-        cout << endl << "Вывод списка с конца:" << endl;
-        LIFOPrintFromLast(tail);
+        }
+        __except (GetExceptionCode() == EXCEPTION_ACCESS_VIOLATION ? EXCEPTION_EXECUTE_HANDLER : EXCEPTION_CONTINUE_SEARCH) {
+            cout << "Список пуст!" << endl;
+        }
+
+        __try {
+            cout << endl << "Вывод списка с конца:" << endl;
+            LIFOPrintFromLast(tail);
+
+        }
+        __except (GetExceptionCode() == EXCEPTION_ACCESS_VIOLATION ? EXCEPTION_EXECUTE_HANDLER : EXCEPTION_CONTINUE_SEARCH) {
+            cout << "Список пуст!" << endl;
+        }
 
         cout << "Введите значение - целое число - для удаления (0 - конец): > ";
         cin >> value;
@@ -99,11 +111,21 @@ void FIFOOperations() {
     {
         FIFORemove(head, value);
 
-        cout << endl << "Вывод списка с начала:" << endl;
-        FIFOPrintFromFirst(head);
+        try {
+            cout << endl << "Вывод списка с начала:" << endl;
+            FIFOPrintFromFirst(head);
+        }
+        catch (const char* error_message) {
+            cout << error_message << endl;
+        }
 
-        cout << endl << "Вывод списка с конца:" << endl;
-        FIFOPrintFromLast(head);
+        try {
+            cout << endl << "Вывод списка с конца:" << endl;
+            FIFOPrintFromLast(head);
+        }
+        catch (const char* error_message) {
+            cout << error_message << endl;
+        }
 
         cout << "Введите значение - целое число - для удаления (0 - конец): > ";
         cin >> value;
